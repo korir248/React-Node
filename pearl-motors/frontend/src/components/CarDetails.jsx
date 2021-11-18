@@ -8,12 +8,14 @@ const CarDetails = () => {
     const {cars,cart} = useSelector(state => state.cart)
     const dispatch = useDispatch()
     const {id}= useParams()
-
-    const car =cars.filter(car=>car.id === id)
-
     console.log(id);
+
+    const car =cars.filter(car=>car.id === parseInt(id))
+
+    console.log(typeof(id));
     console.log(car)
-    const itemInCart = cart.find(cartItem=>cartItem.id === id)
+    const itemInCart = cart.find(cartItem=>cartItem.id === parseInt(id))
+    console.log(itemInCart);
 
     const addingToCart=(id)=>{
 
@@ -24,8 +26,7 @@ const CarDetails = () => {
         
 
     return (
-        <div>
-        <p>Hi</p>
+        <div className="car-detail-div">
             
                 {car?.map(singleCar=>(
                 <div key={singleCar.id}>
