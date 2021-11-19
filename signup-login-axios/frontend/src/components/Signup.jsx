@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -10,12 +11,13 @@ const Signup = ()=>{
             <div className="signup-form">
                 <form>    
                     <p>Signup Form</p>                
-                    <input type="text" placeholder="Fullname" required></input>
-                    <input type="text" placeholder="Email" required></input>
-                    <input type="email" placeholder="Email" required></input>
-                    <input type="password" placeholder="Password" required></input>
-                    <input type="password" placeholder="Confirm Password" required></input>
+                    <input type="text" placeholder="Enter Fullname" required></input>
+                    <input type="text" placeholder="Enter Username" required></input>
+                    <input type="email" placeholder="Enter Email" required></input>
+                    <input type="password" placeholder="Enter Password" required></input>
+                    <input type="password" placeholder="Enter Confirm Password" required></input>
                     <button className="btn-submit" type="submit" value="Submit" >Submit</button>
+                    <i>Already have an account? <Link to="/login">Log in</Link></i>
                 </form>
             </div>
     

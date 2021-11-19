@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom'
 const Home = ()=> {
     return (
         <div>
-        <p>Hi</p>
-        {/* <Link to="/register">
+        <p></p>
+        <Link to="/register">
             <button>Register</button>
         </Link>
         <Link to="/login">
             <button>Login</button>
-        </Link> */}
+        </Link>
 
     
             
