@@ -5,5 +5,15 @@
     "express": "^4.17.1",
     "mssql": "^7.2.1",
     "nodemon": "^2.0.15"
-  }
+  },
+  "scripts": {
+    "start": "nodemon server"
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "author": "Eugene Korir",
+  "license": "ISC",
+  "description": ""
 }
