@@ -30,3 +30,13 @@ input,button{
   color: white;
   font-size:medium;
 }
+.login-form{
+  align-self: center;
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  padding-right: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin-top: 50px;
+
+}

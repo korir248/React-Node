@@ -1,23 +1,23 @@
 import './App.css';
 import Signup from './components/Signup';
-import { BrowserRouter, Route, Routes, Redirect} from "react-router-dom";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from './components/Home';
 import Login from "./components/Login"
 
 
 const App = ()=> {
   return (
-    <div className="App">
-    <Home/>
     <BrowserRouter>
+    <div className="App">
     <Routes>
-      <Route path="/" element={Home}/>
-      <Route path="/register" element={Signup} />
-      <Route path="invoices" element={Login} />
+      <Route path="/" element={<Home/>}/>
+      <Route path="/register" element={<Signup/>}/>
+      <Route path="/login" element={<Login/>}/>
     </Routes>
-  </BrowserRouter>
+    
 
     </div>
+    </BrowserRouter>
   );
 }
 
