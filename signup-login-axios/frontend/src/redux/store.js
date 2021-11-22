@@ -4,6 +4,6 @@ import thunk from 'redux-thunk'
 // import { composeWithDevTools } from 'redux-devtools-extension';
 
 
-const rootReducer = combineReducers(userReducer)
+const rootReducer = combineReducers( {users: userReducer})
 
 export const store = createStore(rootReducer,applyMiddleware(thunk))

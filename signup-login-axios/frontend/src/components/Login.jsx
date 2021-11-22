@@ -1,40 +1,37 @@
-<<<<<<< HEAD
-import React,{ uDispa} from 'react'
+import React,{ useState } from 'react'
 import { Link } from 'react-router-dom'
-import { createUser } from '../redux/actions/userActions'
+import { useDispatch } from 'react-redux'
+import { loginUser } from '../redux/actions/userActions'
 
 const Login = ()=> {
 
     const dispatch = useDispatch()
 
-    const loginUser = (user)=>{
-        dispatch(createUser(user))
-    }
-=======
-import React from 'react'
-import { Link } from 'react-router-dom'
-
-const Login = ()=> {
->>>>>>> a286842160dbc8b032ccd812d15093efa17d51c7
     
+    const [formData, setFormData] = useState({})
+    
+    
+    const handleChange = (e)=>{
+        e.preventDefault()
+        setFormData({...formData,[e.target.name]: e.target.value})
+        
+    }
+    const loggingInUser = (user)=>{
+        dispatch(loginUser(user))
+    }
     return (
         <div>
         <p>Login Page</p>
         <div className="login-form">
             <label for="uname">Username</label>
-            <input type="text" placeholder="Enter Username" required/>
+            <input name="username" placeholder="Enter Username" onChange={handleChange} required/>
 
             <label for="psw">Password</label>
-            <input type="password" placeholder="Enter Password" required/>
+            <input name="password" type="password" placeholder="Enter Password" onChange={handleChange} required/>
 
-<<<<<<< HEAD
-            <button className="btn-submit" type="submit" onSubmit={()=> loginUser()}>Login</button>
+            <button className="btn-submit" type="submit" onSubmit={()=> loggingInUser(formData)}>Login</button>
             <i>Don't have an account? <Link to="/register">Sign up now!</Link></i><br/>
                     <i><Link to="/">Cancel</Link></i>
-=======
-            <button className="btn-submit" type="submit">Login</button>
-            <i>Don't have an account? <Link to="/register">Sign up now!</Link></i>
->>>>>>> a286842160dbc8b032ccd812d15093efa17d51c7
         </div>
     </div>
   
