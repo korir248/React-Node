@@ -1,0 +1,31 @@
+get http://localhost:3001/users/3006
+
+
+Content-Type: application/json 
+
+{
+    "username": "cc-1010"
+}
+
+###
+put http://localhost:3001/users/3006
+Content-Type: application/json
+
+{
+    "username": "Omega1"
+}
+
+###
+DELETE http://localhost:3001/users/4
+
+
+###
+POST http://localhost:3001/users HTTP/1.1
+content-type: application/json
+
+{
+    "username": "ct-5555",
+    "email": "fives@gmail.com",
+    "password": "fives123",
+    "cpassword": "fives123"
+}
