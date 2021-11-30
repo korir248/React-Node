@@ -2,12 +2,13 @@ import { LOGIN_FAIL, LOGIN_STATUS, LOGIN_SUCCESS, SIGNUP_FAIL, SIGNUP_STATUS, SI
 
 const initialState = {
     loading: false,
-    error: ""
+    error: "",
+    user: {}
 
 }
 
-const userReducer = (state=initialState,{type,payload})=>{
-    switch (type) {
+const userReducer = (state=initialState,action)=>{
+    switch (action.type) {
         case LOGIN_STATUS:
             return   {
                 ...state,
@@ -15,13 +16,15 @@ const userReducer = (state=initialState,{type,payload})=>{
             }
         case LOGIN_SUCCESS:
             return {
-                ...state
+                ...state,
+                loading: false,
+                user: action.payload
 
             }
         case LOGIN_FAIL:
             return {
                 ...state,
-                error: payload
+                error: action.payload
 
             }
             case SIGNUP_STATUS:
@@ -39,11 +42,12 @@ const userReducer = (state=initialState,{type,payload})=>{
             console.log("Signup failed!");
             return {
                 ...state,
-                error: payload
+                error: action.payload
 
             }
         default:
-            break;
+            return state;
+        
     }
 }
 

@@ -27,14 +27,12 @@ app.get("/users",(req,res)=>{
 })
 
 app.post("/register",(req,res)=>{
-
-    const {username,email,password} = req.body
     try {
-        addUser(username,email,password).then((result,err)=>{
+        addUser().then((result,err)=>{
             if (err) {
-                return err.message                
+                return res.status(401).send(err.message    )            
             }
-            return result
+            return res.status(200).send(result)
         })
     } catch (error) {
         console.log(error.message);

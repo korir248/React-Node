@@ -23,20 +23,36 @@ const getUsers = async()=>{
     
 }
 
-const addUser = async(username,email,password)=>{
+const addUser = async(req,res)=>{
+    const {username,fullname, email,password,cpassword} = req.body
+
+    if(cpassword !== password) return res.status(401).send({
+        error: "Confirm that both passwords match!"
+    })
     try {
         let pool = await mssql.connect(config)
-        let sql = `insert into users(username,email,password) values(${username},${email},${password})`
-        let result = await pool.request().query(sql,(err,result)=>{
-            if (err) {
-                return err.message
-                
-            }
-            return result
-        })
-        return result
+        let sql2 = "select * from users where isDeleted = 0"
+        const users = pool.request().query(sql2,(err,result)=>{
+            if(err) return res.status(401).send("An error occured")
+            let user = result.recordset.find(user=>{
+                user.email === email || user.username === username
+            })
+            if(user) return res.status(401).send("Email or Username is already taken")
+
+            let sql = `insert into dbo.users([fullname],[username],[email],[password])values('${fullname}','${username}','${email}','${password}');`
+    
+            let resquery= pool.request().query(sql,(err,result)=>{
+                if (err) return res.status(401).send(err.message)
+                return res.status(200).send({
+                    message: "Signup was successful",
+                    data: result.recordset
+                })
+            })
+            return resquery
+        })        
+        return users
     } catch (error) {
-        console.log(error.message);
+        console.log("error: ",error.message);
         
     }
 }
